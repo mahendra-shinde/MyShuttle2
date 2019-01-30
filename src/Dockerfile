@@ -1,5 +1,10 @@
 FROM tomcat:9-jre8-alpine
 
+# Setting Build Arguments
+ARG CONN_STRING="jdbc:mysql://mydb0123.mysql.database.azure.com:3306/alm"
+ARG CONN_USER="user@mydb0123"
+ARG CONN_PASSWORD="password"
+
 RUN apk --update add curl ca-certificates tar 
 RUN set -x \
     && mkdir /home/mysql \
@@ -14,10 +19,9 @@ RUN set -x \
 
 RUN export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
 
-# DEFAULT VALUES MUST BE OVERRIDEN FROM DOCKER RUN
-ENV CONN_STRING "jdbc:mysql://mydb0123.mysql.database.azure.com:3306/alm"
-ENV CONN_USER "user@mydb0123"
-ENV CONN_PASSWORD "password"
+ENV CONN_STRING ${CONN_STRING}
+ENV CONN_USER ${CONN_USER}
+ENV CONN_PASSWORD ${CONN_PASSWORD}
 
 RUN rm -R /usr/local/tomcat/webapps/*
 
