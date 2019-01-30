@@ -14,5 +14,12 @@ RUN set -x \
 
 RUN export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
 
-ADD ./target/myshuttledev.war /usr/local/tomcat/webapps/myshuttledev.war
+# DEFAULT VALUES MUST BE OVERRIDEN FROM DOCKER RUN
+ENV CONN_STRING "jdbc:mysql://mydb0123.mysql.database.azure.com:3306/alm"
+ENV CONN_USER "user@mydb0123"
+ENV CONN_PASSWORD "password"
+
+RUN rm -R /usr/local/tomcat/webapps/*
+
+ADD ./target/myshuttledev.war /usr/local/tomcat/webapps/ROOT.war
 

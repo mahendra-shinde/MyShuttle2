@@ -22,15 +22,27 @@ public class DataAccess
 {
 	// Some database-specific details we'll need
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://db:3306/alm";
-	private static final String DB_USER = "user";
-	private static final String DB_PASS = "password";
+	private static final String DB_URL  ;
+	private static  String DB_USER ="user" ;
+	private static  String DB_PASS ="password" ;
 	
+	/**
+	 * Author: Mahendra Shinde
+	 * Load Connection string from System Environment Variables if present
+	 * Azure MySQL Connection String should be like:
+	 * "jdbc:mysql://{your_db_server}.mysql.database.azure.com:3306/{your_database}?useSSL=true&requireSSL=false"; 
+	 */
+
 	private static Connection theConnection;
 	static {
+		DB_URL = System.getenv("CONN_STRING");
+		DB_USER = System.getenv("CONN_USER");
+		DB_PASS = System.getenv("CONN_PASSWORD");
 		try {
+		
 			// Bootstrap driver into JVM
 			Class.forName(DB_DRIVER);
+			System.out.println("Connection String: "+DB_URL);
 			theConnection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
 		}
 		catch (Exception ex) {

@@ -13,7 +13,7 @@
         <section class="container main-content">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div align="right"><a href="logout.jsp">[Sign Out]</a></div>
+                    <div align="right"><a href="/">[Sign Out]</a></div>
                     <div class="row">
                         <img src="Content/Images/logologin.png">
                     </div>

@@ -1,7 +1,6 @@
 
 CREATE USER 'user' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES on *.* to 'user' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+
 
 CREATE DATABASE alm;
 use alm;
@@ -59,5 +58,5 @@ INSERT INTO `fares` (`emp_id`, `pickup`, `dropoff`, `start`, `end`, `fare_charge
 INSERT INTO `fares` (`emp_id`, `pickup`, `dropoff`, `start`, `end`, `fare_charge`, `driver_fee`, `passenger_rating`, `driver_rating`) VALUES ((select `id` from `employees` where `username`='jamie'), '97 Stegasaurus St, Bedrock, WA', '93 Shale St, Bedrock, WA', '2014-12-13 10:43:00', '2014-12-13 11:20:00', '1869', '1401', '3', '2');
 INSERT INTO `fares` (`emp_id`, `pickup`, `dropoff`, `start`, `end`, `fare_charge`, `driver_fee`, `passenger_rating`, `driver_rating`) VALUES ((select `id` from `employees` where `username`='jamie'), '43 Brontosaurus Blvd, Bedrock, WA', '51 Stegasaurus St, Rock Gardens, WA', '2014-05-17 10:41:00', '2014-05-17 10:53:00', '1460', '1095', '3', '2');
 
-
-
+GRANT ALL PRIVILEGES on alm.* to 'user' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
