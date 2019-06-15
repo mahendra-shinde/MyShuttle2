@@ -35,9 +35,9 @@ public class DataAccess
 
 	private static Connection theConnection;
 	static {
-		DB_URL = System.getenv("CONN_STRING");
-		DB_USER = System.getenv("CONN_USER");
-		DB_PASS = System.getenv("CONN_PASSWORD");
+		DB_URL = "jdbc:mysql://localhost:3306/alm"
+		DB_USER = "root";
+		DB_PASS = "Pass@123";
 		try {
 		
 			// Bootstrap driver into JVM
